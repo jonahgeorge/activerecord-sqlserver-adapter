@@ -90,7 +90,7 @@ module ActiveRecord
         ]
 
         stdout_str, stderr_str, status = Open3.capture3(command.join(" "), stdin_data: File.read(filename))
-        raise "Error loading database: #{stderr_str}" unless status.exitstatus == 0
+        raise "Error loading database: #{stdout_str} #{stderr_str}" unless status.exitstatus == 0
       end
 
       private
