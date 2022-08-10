@@ -89,7 +89,7 @@ module ActiveRecord
           "-P #{Shellwords.escape(configuration_hash[:password])}",
         ]
 
-        stdout_str, stderr_str, status = Open3.capture3(command.join(" "), stdin_data: File.read(filename))
+        stdout_str, stderr_str, status = ::Open3.capture3(command.join(" "), stdin_data: File.read(filename))
         raise "Error loading database: #{stderr_str}" unless status.exitstatus == 0
       end
 
